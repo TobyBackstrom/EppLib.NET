@@ -1,54 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{24067FC1-33F6-428B-8E0E-74601A5354EA}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EppLib</RootNamespace>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>EppLib</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
-    <TargetFrameworkProfile />
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>epplib.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AuthInfo.cs" />
     <Compile Include="Entities\Contact\ContactCheckResult.cs" />
     <Compile Include="Entities\Domain\DomainReleaseResponse.cs" />
     <Compile Include="Entities\Domain\DomainRelease.cs" />
+    <Compile Include="Extensions\Fury\FuryContactCreateExtension.cs" />
+    <Compile Include="Extensions\Fury\FuryContactUpdateExtension .cs" />
+    <Compile Include="Extensions\Fury\FuryDomainCreateExtension.cs" />
+    <Compile Include="Extensions\Fury\FuryDomainUpdateExtension.cs" />
+    <Compile Include="Extensions\Fury\FuryExtension.cs" />
+    <Compile Include="Extensions\Fury\FuryGetAgreementExtension.cs" />
+    <Compile Include="Extensions\Fury\GetAgreement.cs" />
+    <Compile Include="Extensions\Fury\GetAgreementResponse.cs" />
+    <Compile Include="Extensions\Idn\IdnExtension.cs" />
     <Compile Include="Extensions\Iis\IisContactCreate.cs" />
     <Compile Include="Extensions\Iis\IisContactCreateExtension.cs" />
     <Compile Include="Extensions\Iis\IisContactExtension.cs" />
@@ -62,6 +34,14 @@
     <Compile Include="Extensions\Iis\IisDomainUpdate.cs" />
     <Compile Include="Extensions\Iis\IisDomainUpdateExtension.cs" />
     <Compile Include="Extensions\Iis\IisExtensionBase.cs" />
+    <Compile Include="Extensions\LaunchPhase\ClaimCheck\ClaimCheck.cs" />
+    <Compile Include="Extensions\LaunchPhase\ClaimCheck\ClaimCheckExtension.cs" />
+    <Compile Include="Extensions\LaunchPhase\ClaimCheck\ClaimCheckResponse.cs" />
+    <Compile Include="Extensions\LaunchPhase\ClaimCheck\ClaimCheckResult.cs" />
+    <Compile Include="Extensions\LaunchPhase\ClaimCheck\ClaimKey.cs" />
+    <Compile Include="Extensions\LaunchPhase\ClaimCreate\ClaimCreate.cs" />
+    <Compile Include="Extensions\LaunchPhase\ClaimCreate\ClaimCreateExtension.cs" />
+    <Compile Include="Extensions\LaunchPhase\ClaimCreate\ClaimNotice.cs" />
     <Compile Include="Extensions\Nominet\ContactInfo\NominetDataQualityExtension.cs" />
     <Compile Include="Extensions\Nominet\DomainCheck\NominetDomainCheck.cs" />
     <Compile Include="Extensions\Nominet\DomainCheck\NominetDomainCheckExtension.cs" />
@@ -179,35 +159,13 @@
     <Compile Include="Extensions\Nominet\DomainInfo\NominetDomainInfoResponse.cs" />
     <Compile Include="Extensions\Nominet\DomainUpdate\NominetDomainUpdate.cs" />
     <Compile Include="Extensions\Nominet\DomainUpdate\NominetDomainUpdateExtension.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
+    <Compile Include="Extensions\SecDNS\SecDNSCreate.cs" />
+    <Compile Include="Extensions\SecDNS\SecDNSData.cs" />
+    <Compile Include="Extensions\SecDNS\SecDNSUpdate.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TcpTransport.cs" />
     <Compile Include="IDebugger.cs" />
     <Compile Include="SimpleLogger.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="epplib.pfx" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
-  <PropertyGroup>
-    <PostBuildEvent>if /I "$(ConfigurationName)" == "Release" Eazfuscator.NET.exe "$(TargetPath)" --msbuild-project-path "$(ProjectPath)" --msbuild-project-configuration "$(ConfigurationName)" --msbuild-project-platform "$(PlatformName)" --msbuild-solution-path "$(SolutionPath)" -n --newline-flush -v 3.2</PostBuildEvent>
-  </PropertyGroup>
 </Project>
