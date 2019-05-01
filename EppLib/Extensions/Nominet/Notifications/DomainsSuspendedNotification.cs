@@ -34,7 +34,7 @@ namespace EppLib.Extensions.Nominet.Notifications
                     DateTime parsedDate;
                     if (DateTime.TryParse(cancelDateNode.InnerText, out parsedDate))
                     {
-                        CancelDate = parsedDate;
+                        CancelDate = cancelDateNode.InnerText.EndsWith("Z", StringComparison.InvariantCultureIgnoreCase) ? parsedDate.ToUniversalTime() : parsedDate;
                     }
                 }
 
